@@ -1,13 +1,17 @@
-
-import './App.css';
-
+import React from 'react'
+import {Provider} from 'react-redux'
+import { DataTable } from './components/DataTable'
+import { Navber } from './components/Navber'
+import store from './redux/store';
+import  './style/App.scss' 
 function App() {
   return (
+    <Provider store={store}>
     <div className="App">
-      <header className="App-header">
-      <h2>recux crud project</h2>
-      </header>
-    </div>
+     <Navber/>
+     <DataTable/>
+    </div>  
+      </Provider>
   );
 }
 

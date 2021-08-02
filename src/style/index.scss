@@ -1,0 +1,11 @@
+$theme-colors: (
+  "primary": #0074d9,
+  "danger": #d6bb23,
+  "success":green ,
+  "warning":yellow );
+
+  body{
+    padding-top:40px;
+  }
+
+@import "node_modules/bootstrap/scss/bootstrap";
