@@ -6,7 +6,7 @@ export const DataTable = () => {
     console.log(users)
     return (
         <div className='container mt-3'>
-            <h2 >User information</h2><hr/>
+            <h2 className='text-uppercase' >User information</h2><hr/>
             <table className="table table-striped table-hover table-light">
                 <thead>
                     <tr>
@@ -36,9 +36,9 @@ export const DataTable = () => {
                     <td>{user.email}</td>
                     <td>{user.phone}</td>
                     <td>{user.website}</td>
-                    <td className="d-flex justify-content-center" >
-                     <button>edit</button>
-                     <button>delete</button>
+                    <td className="d-flex justify-content-between" >
+                     <button className='btn btn-success'>edit</button>
+                     <button className='btn btn-danger'>delete</button>
                     </td>
 
                     </tr>
@@ -47,7 +47,7 @@ export const DataTable = () => {
                 </tbody>
             </table>
             <div  className="container d-flex justify-content-between ">
-                      <button className="btn btn-outline-info">selected item 10</button><button >clear all</button>
+                      <button className="btn btn-primary">selected item 10</button><button  className='btn btn-warning text-color-warning'>clear all</button>
                   </div>
             
         </div>

@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-export const Navber = () => {
+const Navber = () => {
     return (
         <div className="navbar shadow fixed-top navbar-expand-sm navbar-dark bg-primary pd-3">
             <div className='container'>
            
-            <a href="#home" className='navbar-brand'>User crud app</a>
+            <Link to='/'><a href="#home" className='navbar-brand'>User crud app</a></Link>
                 <div>
-                    <a href="#home" className='btn btn-light ml-auto btn-success '>add user</a>
+                   <Link to='/components/add/' className='btn btn-light ml-auto btn-success'>add user</Link> 
                 </div>
                 
             </div>
@@ -15,3 +16,4 @@ export const Navber = () => {
         </div>
     )
 }
+export default Navber
