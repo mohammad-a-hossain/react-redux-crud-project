@@ -1,4 +1,4 @@
-import {CREATEUSER} from './actionType'
+import {CREATEUSER,GET_CONTACT} from './actionType'
 
 export const addUser = (users)=>{
     return{
@@ -6,3 +6,13 @@ export const addUser = (users)=>{
       payload:users,
     }
   }
+  export const getContact = (id) => ({
+    type: GET_CONTACT,
+    payload: id,
+  });
+  // update a contact
+/* export const updateContact = (users) => ({
+  type: UPDATE_CONTACT,
+  payload: users,
+});
+ */

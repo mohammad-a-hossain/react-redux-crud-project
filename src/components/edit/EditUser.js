@@ -1,30 +1,40 @@
 import React from 'react'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addUser } from '../../redux/action'
+import { useState,useEffect } from 'react'
+import { useDispatch,useSelector } from 'react-redux'
+import { getContact } from '../../redux/action'
 import { useHistory } from 'react-router-dom'
+import { useParams } from 'react-router'
 
- const AddUser = () => {
-   let history = useHistory()
+ const EditUser = () => {
+    let { id } = useParams();
+    //alert(id)
+   //let history = useHistory()
    const dispatch = useDispatch()
+   const users = useSelector((state) =>state.usersData.users)
    const [name, setFullName] = useState('')
    const [username, setUserName] =useState('')
    const [email, setEmail] =useState('')
    const [phone,setPhone] =useState('')
    const [website,setWebsite] =useState('')
 
-   const crateUser=(e)=>{
+   useEffect(() => {
+    if (users != null) {
+     setFullName(users.name);
+      setPhone(users.phone);
+      setEmail(users.email);
+    }
+    dispatch(getContact(id));
+  }, [users]);
+
+   const onUpdateUser=(e)=>{
      e.preventDefault()
-     const newUser ={
-       id:new Date().getTime().toString(),
-       name,
-       username,
-       email,
-       phone,
-       website
-     }
-     dispatch(addUser(newUser))
-     history.push('/')
+     const updat_eUser =Object.assign(users, {
+        name: name,
+        phone: phone,
+        email: email,
+      });
+    //  dispatch(updateUser(updat_eUser))
+    //  history.push('/')
     // console.log(fullName,userName,email,phone,website)
 
    }
@@ -34,7 +44,7 @@ import { useHistory } from 'react-router-dom'
           
         <div className="card-body">
             <h5 class="card-title">user form</h5>
-          <form onSubmit={(e)=>crateUser(e)}>
+          <form onSubmit={(e)=>onUpdateUser(e)}>
             <div class="form-group">
               <label for="exampleInputEmail1">full name</label>
               <input type="text" class="form-control" onChange={(e)=> setFullName(e.target.value) } value={name} placeholder="Enter full name"/>
@@ -60,7 +70,7 @@ import { useHistory } from 'react-router-dom'
               <input type="text" class="form-control" value={website} onChange={(e)=>setWebsite(e.target.value)} placeholder="website"/>
             </div>
          <br></br>
-            <button type="submit" class="btn btn-primary">add user</button>
+            <button type="submit" class="btn btn-primary">Update user</button>
           </form>
           
          </div>
@@ -70,4 +80,4 @@ import { useHistory } from 'react-router-dom'
        </div>
     )
 }
-export default AddUser
+export default EditUser

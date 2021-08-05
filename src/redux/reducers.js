@@ -1,5 +1,5 @@
 
-  import { CREATEUSER } from "./actionType";
+  import { CREATEUSER,GET_CONTACT} from "./actionType";
    const initialState ={
       users:[
       {
@@ -131,7 +131,18 @@
             ...state,
             users:[action.payload,...state.users]
           }
-
+          case GET_CONTACT:
+            let arr = state.users.filter(
+              (user) => user.id === action.payload
+            );
+            arr = arr.values();
+            for (let val of arr) {
+              arr = val;
+            }
+            return {
+              ...state,
+              users: arr,
+            };
         default :return state;
     }
 }

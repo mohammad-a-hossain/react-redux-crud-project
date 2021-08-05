@@ -1,9 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 export const DataTable = () => {
-    const users = useSelector(state =>state.users)
-    console.log(users)
+    const users = useSelector(state =>state.usersData.users)
+    //console.log(users)
     return (
         <div className='container mt-3'>
             <h2 className='text-uppercase' >User information</h2><hr/>
@@ -31,13 +32,17 @@ export const DataTable = () => {
                     <th scope="row">
                     <input type="checkbox"></input>
                     </th>
+                  
                     <td>{user.name}</td>
                     <td>{user.username}</td>
                     <td>{user.email}</td>
                     <td>{user.phone}</td>
                     <td>{user.website}</td>
                     <td className="d-flex justify-content-between" >
-                     <button className='btn btn-success'>edit</button>
+                    <Link to={`/components/edit/${user.id}`}>
+                    <button className='btn btn-success'>edit</button>
+                   </Link>
+                     {/* <button className='btn btn-success'>edit</button> */}
                      <button className='btn btn-danger'>delete</button>
                     </td>
 
